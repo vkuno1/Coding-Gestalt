@@ -32,9 +32,9 @@ PImage copy_pixels_easy(PImage source) {
 
 
 // this is how to copy pixels using the pixels array
-PImage copy_pixels_fast(PImage img) {
+PImage copy_pixels_fast(PImage img, String filter) {
   
-  Timer.start();
+ // Timer.start();
   
   // get image dimensions
   int w = img.width, h = img.height;
@@ -51,15 +51,22 @@ PImage copy_pixels_fast(PImage img) {
       
       // just copy the pixel from the source to the target
       // this is where you do all the crazy per pixel operations
-      img2.pixels[y * w + x] = img.pixels[y * w + x];
-      
+      if (filter.equals("red")) {
+        img2.pixels[y * w + x] = color(red(img.pixels[y * w + x]), 0, 0);
+      }
+      else if (filter.equals("green")) {
+        img2.pixels[y * w + x] = color(0, green(img.pixels[y * w + x]), 0);
+      }
+      else if (filter.equals("blue")) {
+        img2.pixels[y * w + x] = color(0, 0, blue(img.pixels[y * w + x]));
+      }
     }
   }
   
   // tell the target image you are done writing pixels 
   img2.updatePixels();
   
-  Timer.stop("copy pixels fast");
+ // Timer.stop("copy pixels fast");
   
   return img2;
   

@@ -2,7 +2,7 @@ PImage img;
 void setup() {
   size(400 , 400);
  
-  img = loadImage("silhouette_fairy.png");    
+  img = loadImage("outline_bug.png");    
 }
 
 void draw() {

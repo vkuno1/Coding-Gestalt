@@ -34,10 +34,11 @@ int zoom = 1;
 // camera capture dimensions
 int w = 160 * size, h = 120 * size;
 
+
 void setup() {
 
   // space for 2 x 2 images
-  size(w * zoom * 2 + 1, h * zoom * 2 + 1); 
+  size(w *zoom * 2 + 1, h * zoom * 2 + 1); 
 
   cam = new Capture(this, w, h);
   cam.start();
@@ -70,4 +71,11 @@ void captureEvent(Capture c) {
   c.read();
 }
 
+void keyPressed() {
 
+  if (key == 'a'){
+    save(frameCount + ".jpg");
+    println("shot");
+  }
+  
+}
